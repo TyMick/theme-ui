@@ -8,7 +8,7 @@ export const baseColors = {
     '#dee2e6',
     '#ced4da',
     '#adb5bd',
-    '#6c757d',
+    '#6c757d', // gray[6] is Bootstrap's primary $gray
     '#495057',
     '#343a40',
     '#212529',
@@ -23,7 +23,6 @@ export const baseColors = {
   green: '#28a745',
   teal: '#20c997',
   cyan: '#17a2b8',
-  // gray: gray[6],
 }
 
 export const colors = {
