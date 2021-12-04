@@ -12,6 +12,9 @@
   "publishConfig": {
     "access": "public"
   },
+  "dependencies": {
+    "polished": "^4.0.5"
+  },
   "peerDependencies": {
     "@theme-ui/css": ">=0.12.0"
   },

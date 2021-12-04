@@ -1,3 +1,5 @@
+import { shade, tint } from 'polished'
+
 const white = '#fff'
 const grays = [
   white, // 0 index
@@ -42,6 +44,19 @@ const themeColors = {
   dark: grays[9],
 }
 
+const colorShades = {
+  blues: generateColorShades(baseColors.blue),
+  indigos: generateColorShades(baseColors.indigo),
+  purples: generateColorShades(baseColors.purple),
+  pinks: generateColorShades(baseColors.pink),
+  reds: generateColorShades(baseColors.red),
+  oranges: generateColorShades(baseColors.orange),
+  yellows: generateColorShades(baseColors.yellow),
+  greens: generateColorShades(baseColors.green),
+  teals: generateColorShades(baseColors.teal),
+  cyans: generateColorShades(baseColors.cyan),
+}
+
 const themeUiColors = {
   text: grays[9],
   background: baseColors.white,
@@ -54,5 +69,21 @@ export const colors = {
   black,
   ...baseColors,
   ...themeColors,
+  ...colorShades,
   ...themeUiColors,
+}
+
+function generateColorShades(color: string) {
+  return [
+    white, // 0 index
+    tint(0.8, color),
+    tint(0.6, color),
+    tint(0.4, color),
+    tint(0.2, color),
+    color,
+    shade(0.2, color),
+    shade(0.4, color),
+    shade(0.6, color),
+    shade(0.8, color),
+  ]
 }
