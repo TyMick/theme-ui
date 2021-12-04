@@ -35,7 +35,7 @@ export const colors = {
   warning: baseColors.yellow,
   danger: baseColors.red,
   light: baseColors.gray[1],
-  dark: baseColors.gray[8],
+  dark: baseColors.gray[9],
   text: baseColors.gray[9],
   background: baseColors.white,
   muted: baseColors.gray[3],
