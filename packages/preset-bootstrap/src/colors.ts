@@ -1,4 +1,4 @@
-import { shade, tint } from 'polished'
+import { rgba, shade, tint } from 'polished'
 
 const white = '#fff'
 const grays = [
@@ -58,10 +58,9 @@ const colorShades = {
 }
 
 const themeUiColors = {
-  text: grays[9],
-  background: baseColors.white,
-  muted: grays[3],
-  textMuted: grays[6],
+  text: grays[9], // $body-color
+  background: baseColors.white, // $body-bg
+  highlight: rgba(themeColors.primary, 0.25), // $input-btn-focus-color
 }
 
 export const colors = {
