@@ -13,10 +13,15 @@
     "access": "public"
   },
   "dependencies": {
+    "csstype": "^3.0.10",
+    "lodash.merge": "^4.6.1",
     "polished": "^4.0.5"
   },
   "peerDependencies": {
     "@theme-ui/css": ">=0.12.0"
   },
-  "gitHead": "621199460fa3bdb0100748441e62517b7529b8c8"
+  "gitHead": "621199460fa3bdb0100748441e62517b7529b8c8",
+  "devDependencies": {
+    "@types/lodash.merge": "^4.6.6"
+  }
 }

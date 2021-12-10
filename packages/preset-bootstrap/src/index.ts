@@ -1,5 +1,5 @@
 import { makeStyles, makeTheme } from '@theme-ui/css/utils'
-import { colors } from './colors'
+import { generateColors } from './colors'
 import { fonts, fontSizes, fontWeights, lineHeights } from './typography'
 
 export const space = [0, 0.25, 0.5, 1, 1.5, 3].map((n) => n + 'rem')
@@ -126,7 +126,7 @@ export const styles = makeStyles({
 
 export const bootstrap = makeTheme({
   breakpoints,
-  colors,
+  colors: generateColors(),
   space,
   fonts,
   fontSizes,
