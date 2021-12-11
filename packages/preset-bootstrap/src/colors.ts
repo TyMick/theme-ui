@@ -102,20 +102,25 @@ export function generateColors(
     cyans: overrides.cyans ?? generateColorShades(baseColors.cyan),
   }
 
-  const themeUiColors = {
+  const bootstrapColors: BootstrapColors = {
+    grays,
+    black,
+    ...baseColors,
+    ...themeColors,
+    ...colorShades,
+  }
+
+  const themeUiExtras = {
     text: overrides.text ?? grays[9], // $body-color
     background: overrides.background ?? baseColors.white, // $body-bg
     highlight: overrides.highlight ?? rgba(themeColors.primary, 0.25), // $input-btn-focus-color
   }
 
   return {
-    grays,
-    black,
-    ...baseColors,
-    ...themeColors,
-    ...colorShades,
-    ...themeUiColors,
-  }
+    ...overrides,
+    ...bootstrapColors,
+    ...themeUiExtras,
+  } as BootstrapColors & ColorModesScale
 
   function generateColorShades(color: string) {
     return [
