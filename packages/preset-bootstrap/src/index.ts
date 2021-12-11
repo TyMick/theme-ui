@@ -1,4 +1,5 @@
 import { makeStyles, makeTheme } from '@theme-ui/css/utils'
+import { generateBorderWidths, generateRadii } from './borders'
 import { generateColors } from './colors'
 import {
   generateFonts,
@@ -7,6 +8,7 @@ import {
   generateLineHeights,
 } from './typography'
 
+// $ spacers
 export const space = [0, 0.25, 0.5, 1, 1.5, 3].map((n) => n + 'rem')
 
 export const breakpoints = ['576px', '768px', '992px', '1200px']
@@ -17,13 +19,6 @@ export const sizes = {
   md: 720,
   lg: 960,
   xl: 1140,
-}
-
-export const radii = {
-  default: '0.25rem',
-  sm: '0.2rem',
-  lg: '0.3rem',
-  pill: '50rem',
 }
 
 export const shadows = {
@@ -130,16 +125,17 @@ export const styles = makeStyles({
 })
 
 export const bootstrap = makeTheme({
-  breakpoints,
+  borderWidths: generateBorderWidths(),
+  radii: generateRadii(),
   colors: generateColors(),
-  space,
   fonts: generateFonts(),
   fontSizes: generateFontSizes(),
   fontWeights: generateFontWeights(),
   lineHeights: generateLineHeights(),
+  breakpoints,
+  space,
   sizes,
   shadows,
-  radii,
   text,
   styles,
 })

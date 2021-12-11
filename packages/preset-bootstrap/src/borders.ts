@@ -1,0 +1,49 @@
+import { ScaleDict, TLengthStyledSystem } from '@theme-ui/css'
+import * as CSS from 'csstype'
+
+export interface BootstrapBorderWidths {
+  base: CSS.Property.BorderWidth<TLengthStyledSystem>
+  [index: number]: CSS.Property.BorderWidth<TLengthStyledSystem>
+}
+export function generateBorderWidths(
+  overrides: Partial<
+    BootstrapBorderWidths &
+      ScaleDict<CSS.Property.BorderWidth<TLengthStyledSystem>>
+  > = {}
+): BootstrapBorderWidths &
+  ScaleDict<CSS.Property.BorderWidth<TLengthStyledSystem>> {
+  return Object.assign(
+    [
+      0, // 0 index
+      '1px',
+      '2px',
+      '3px',
+      '4px',
+      '5px',
+    ],
+    { base: '1px' },
+    overrides
+  )
+}
+
+export interface BootstrapBorderRadii {
+  base: CSS.Property.BorderRadius<TLengthStyledSystem>
+  sm: CSS.Property.BorderRadius<TLengthStyledSystem>
+  lg: CSS.Property.BorderRadius<TLengthStyledSystem>
+  pill: CSS.Property.BorderRadius<TLengthStyledSystem>
+}
+export function generateRadii(
+  overrides: Partial<
+    BootstrapBorderRadii &
+      ScaleDict<CSS.Property.BorderRadius<TLengthStyledSystem>>
+  > = {}
+): BootstrapBorderRadii &
+  ScaleDict<CSS.Property.BorderRadius<TLengthStyledSystem>> {
+  return {
+    base: '0.25rem',
+    sm: '0.2rem',
+    lg: '0.3rem',
+    pill: '50rem',
+    ...overrides,
+  }
+}
