@@ -3,7 +3,11 @@ import * as CSS from 'csstype'
 
 export interface BootstrapBorderWidths {
   base: CSS.Property.BorderWidth<TLengthStyledSystem>
-  [index: number]: CSS.Property.BorderWidth<TLengthStyledSystem>
+  1: CSS.Property.BorderWidth<TLengthStyledSystem>
+  2: CSS.Property.BorderWidth<TLengthStyledSystem>
+  3: CSS.Property.BorderWidth<TLengthStyledSystem>
+  4: CSS.Property.BorderWidth<TLengthStyledSystem>
+  5: CSS.Property.BorderWidth<TLengthStyledSystem>
 }
 export function generateBorderWidths(
   overrides: Partial<
@@ -12,18 +16,15 @@ export function generateBorderWidths(
   > = {}
 ): BootstrapBorderWidths &
   ScaleDict<CSS.Property.BorderWidth<TLengthStyledSystem>> {
-  return Object.assign(
-    [
-      0, // 0 index
-      '1px',
-      '2px',
-      '3px',
-      '4px',
-      '5px',
-    ],
-    { base: '1px' },
-    overrides
-  )
+  return {
+    base: '1px',
+    1: '1px',
+    2: '2px',
+    3: '3px',
+    4: '4px',
+    5: '5px',
+    ...overrides,
+  }
 }
 
 export interface BootstrapBorderRadii {

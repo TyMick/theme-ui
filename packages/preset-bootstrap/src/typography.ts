@@ -84,12 +84,12 @@ export interface BootstrapFontSizes {
   base: CSS.Property.FontSize<number>
   sm: CSS.Property.FontSize<number>
   lg: CSS.Property.FontSize<number>
-  h1: CSS.Property.FontSize<number>
-  h2: CSS.Property.FontSize<number>
-  h3: CSS.Property.FontSize<number>
-  h4: CSS.Property.FontSize<number>
-  h5: CSS.Property.FontSize<number>
-  h6: CSS.Property.FontSize<number>
+  1: CSS.Property.FontSize<number>
+  2: CSS.Property.FontSize<number>
+  3: CSS.Property.FontSize<number>
+  4: CSS.Property.FontSize<number>
+  5: CSS.Property.FontSize<number>
+  6: CSS.Property.FontSize<number>
 }
 export function generateFontSizes(
   overrides: Partial<
@@ -101,12 +101,12 @@ export function generateFontSizes(
     base,
     sm: overrides.sm ?? multiplyWithUnit(base, 0.875),
     lg: overrides.lg ?? multiplyWithUnit(base, 1.25),
-    h1: overrides.h1 ?? multiplyWithUnit(base, 2.5),
-    h2: overrides.h2 ?? multiplyWithUnit(base, 2),
-    h3: overrides.h3 ?? multiplyWithUnit(base, 1.75),
-    h4: overrides.h4 ?? multiplyWithUnit(base, 1.5),
-    h5: overrides.h5 ?? multiplyWithUnit(base, 1.25),
-    h6: overrides.h6 ?? multiplyWithUnit(base, 1),
+    1: overrides[1] ?? multiplyWithUnit(base, 2.5),
+    2: overrides[2] ?? multiplyWithUnit(base, 2),
+    3: overrides[3] ?? multiplyWithUnit(base, 1.75),
+    4: overrides[4] ?? multiplyWithUnit(base, 1.5),
+    5: overrides[5] ?? multiplyWithUnit(base, 1.25),
+    6: overrides[6] ?? multiplyWithUnit(base, 1),
   }
 
   return { ...overrides, ...bootstrapFontSizes }
