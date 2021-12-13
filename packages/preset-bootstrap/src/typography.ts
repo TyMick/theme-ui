@@ -1,6 +1,5 @@
 import { ScaleDict, TLengthStyledSystem } from '@theme-ui/css'
 import * as CSS from 'csstype'
-import union from 'lodash/union'
 
 export interface BootstrapFonts {
   sansSerif: CSS.Property.FontFamily
@@ -11,41 +10,24 @@ export interface BootstrapFonts {
 export function generateFonts(
   overrides: Partial<BootstrapFonts & ScaleDict<CSS.Property.FontFamily>> = {}
 ): BootstrapFonts & ScaleDict<CSS.Property.FontFamily> {
-  const sansSerif = unionFonts(
-    overrides.sansSerif,
+  const sansSerif =
+    overrides.sansSerif ??
     'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'
-  )
-  const monospace = unionFonts(
-    overrides.monospace,
+  const monospace =
+    overrides.monospace ??
     'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
-  )
   const bootstrapFonts: BootstrapFonts = {
     sansSerif,
     monospace,
-    base: unionFonts(overrides.base, sansSerif),
-    code: unionFonts(overrides.code, monospace),
+    base: overrides.base ?? sansSerif,
+    code: overrides.code ?? monospace,
   }
 
   const themeUiExtras = {
-    body:
-      typeof overrides.body === 'string' || overrides.body === undefined
-        ? unionFonts(overrides.body, bootstrapFonts.base)
-        : overrides.body,
+    body: overrides.body ?? bootstrapFonts.base,
   }
 
   return { ...overrides, ...bootstrapFonts, ...themeUiExtras }
-}
-
-function unionFonts(overrideFontFamily?: string, defaultFontFamily?: string) {
-  const overridesArray = (overrideFontFamily?.split(/, ?/) ?? []).map((font) =>
-    font.replace(/^"|^'|"$|'$/g, '')
-  )
-  const defaultsArray = (defaultFontFamily?.split(/, ?/) ?? []).map((font) =>
-    font.replace(/^"|^'|"$|'$/g, '')
-  )
-  return union(overridesArray, defaultsArray)
-    .map((font) => (font.includes(' ') ? `"${font}"` : font))
-    .join(', ')
 }
 
 export interface BootstrapFontWeights {
