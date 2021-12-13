@@ -4,27 +4,21 @@ import * as CSS from 'csstype'
 export interface BootstrapFonts {
   sansSerif: CSS.Property.FontFamily
   monospace: CSS.Property.FontFamily
-  base: CSS.Property.FontFamily
-  code: CSS.Property.FontFamily
 }
 export function generateFonts(
   overrides: Partial<BootstrapFonts & ScaleDict<CSS.Property.FontFamily>> = {}
 ): BootstrapFonts & ScaleDict<CSS.Property.FontFamily> {
-  const sansSerif =
-    overrides.sansSerif ??
-    'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'
-  const monospace =
-    overrides.monospace ??
-    'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace'
   const bootstrapFonts: BootstrapFonts = {
-    sansSerif,
-    monospace,
-    base: overrides.base ?? sansSerif,
-    code: overrides.code ?? monospace,
+    sansSerif:
+      overrides.sansSerif ??
+      'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+    monospace:
+      overrides.monospace ??
+      'SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
   }
 
   const themeUiExtras = {
-    body: overrides.body ?? bootstrapFonts.base,
+    body: overrides.body ?? bootstrapFonts.sansSerif,
   }
 
   return { ...overrides, ...bootstrapFonts, ...themeUiExtras }
