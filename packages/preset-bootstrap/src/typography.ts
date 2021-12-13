@@ -30,13 +30,6 @@ export interface BootstrapFontWeights {
   normal: CSS.Property.FontWeight
   bold: CSS.Property.FontWeight
   bolder: CSS.Property.FontWeight
-  base: CSS.Property.FontWeight
-  headings: CSS.Property.FontWeight
-  display: CSS.Property.FontWeight
-  lead: CSS.Property.FontWeight
-  legend?: CSS.Property.FontWeight
-  dt: CSS.Property.FontWeight
-  nestedKbd: CSS.Property.FontWeight
 }
 export function generateFontWeights(
   overrides: Partial<
@@ -51,18 +44,11 @@ export function generateFontWeights(
     normal,
     bold,
     bolder: overrides.bolder ?? 'bolder',
-    base: overrides.base ?? normal,
-    headings: overrides.headings ?? 500,
-    display: overrides.display ?? 300,
-    lead: overrides.lead ?? 300,
-    legend: overrides.legend ?? undefined,
-    dt: overrides.dt ?? bold,
-    nestedKbd: overrides.nestedKbd ?? bold,
   }
 
   const themeUiExtras = {
-    body: overrides.body ?? bootstrapFontWeights.normal,
-    heading: overrides.heading ?? bootstrapFontWeights.headings,
+    body: overrides.body ?? bootstrapFontWeights.normal, // $font-weight-base
+    heading: overrides.heading ?? 300, // $headings-font-weight
   }
 
   return { ...overrides, ...bootstrapFontWeights, ...themeUiExtras }
@@ -72,8 +58,6 @@ export interface BootstrapLineHeights {
   base: CSS.Property.LineHeight<TLengthStyledSystem>
   sm: CSS.Property.LineHeight<TLengthStyledSystem>
   lg: CSS.Property.LineHeight<TLengthStyledSystem>
-  headings: CSS.Property.LineHeight<TLengthStyledSystem>
-  display: CSS.Property.LineHeight<TLengthStyledSystem>
 }
 export function generateLineHeights(
   overrides: Partial<
@@ -82,25 +66,21 @@ export function generateLineHeights(
   > = {}
 ): BootstrapLineHeights &
   ScaleDict<CSS.Property.LineHeight<TLengthStyledSystem>> {
-  const headings = overrides.headings ?? 1.2
   const bootstrapLineHeights: BootstrapLineHeights = {
     base: overrides.base ?? 1.5,
     sm: overrides.sm ?? 1.25,
     lg: overrides.lg ?? 2,
-    headings,
-    display: overrides.display ?? headings,
   }
 
   const themeUiExtras = {
     body: overrides.body ?? bootstrapLineHeights.base,
-    heading: overrides.heading ?? bootstrapLineHeights.headings,
+    heading: overrides.heading ?? 1.2, // $headings-line-height
   }
 
   return { ...overrides, ...bootstrapLineHeights, ...themeUiExtras }
 }
 
 export interface BootstrapFontSizes {
-  root?: CSS.Property.FontSize<number>
   base: CSS.Property.FontSize<number>
   sm: CSS.Property.FontSize<number>
   lg: CSS.Property.FontSize<number>
@@ -110,13 +90,6 @@ export interface BootstrapFontSizes {
   h4: CSS.Property.FontSize<number>
   h5: CSS.Property.FontSize<number>
   h6: CSS.Property.FontSize<number>
-  display: CSS.Property.FontSize<number>[]
-  lead: CSS.Property.FontSize<number>
-  small: CSS.Property.FontSize<number>
-  subSup: CSS.Property.FontSize<number>
-  initialism: CSS.Property.FontSize<number>
-  blockquote: CSS.Property.FontSize<number>
-  legend: CSS.Property.FontSize<number>
 }
 export function generateFontSizes(
   overrides: Partial<
@@ -124,9 +97,7 @@ export function generateFontSizes(
   > = {}
 ): BootstrapFontSizes & ScaleDict<CSS.Property.FontSize<number>> {
   const base = overrides.base ?? '1rem'
-  const small = overrides.small ?? '0.875em'
   const bootstrapFontSizes: BootstrapFontSizes = {
-    root: overrides.root ?? undefined,
     base,
     sm: overrides.sm ?? multiplyWithUnit(base, 0.875),
     lg: overrides.lg ?? multiplyWithUnit(base, 1.25),
@@ -136,21 +107,6 @@ export function generateFontSizes(
     h4: overrides.h4 ?? multiplyWithUnit(base, 1.5),
     h5: overrides.h5 ?? multiplyWithUnit(base, 1.25),
     h6: overrides.h6 ?? multiplyWithUnit(base, 1),
-    display: overrides.display ?? [
-      0,
-      '5rem',
-      '4.5rem',
-      '4rem',
-      '3.5rem',
-      '3rem',
-      '2.5rem',
-    ],
-    lead: overrides.lead ?? multiplyWithUnit(base, 1.25),
-    small,
-    subSup: overrides.subSup ?? '0.75em',
-    initialism: overrides.initialism ?? small,
-    blockquote: overrides.blockquote ?? multiplyWithUnit(base, 1.25),
-    legend: overrides.legend ?? '1.5rem',
   }
 
   return { ...overrides, ...bootstrapFontSizes }
