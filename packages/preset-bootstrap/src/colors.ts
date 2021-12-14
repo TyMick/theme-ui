@@ -37,6 +37,8 @@ export interface BootstrapColors {
   greens: NestedScale<CSS.Property.Color>
   teals: NestedScale<CSS.Property.Color>
   cyans: NestedScale<CSS.Property.Color>
+  muted: CSS.Property.Color
+  reset: CSS.Property.Color
 }
 
 export function generateColors(
@@ -108,6 +110,8 @@ export function generateColors(
     ...baseColors,
     ...themeColors,
     ...colorShades,
+    muted: overrides.muted ?? grays[6],
+    reset: overrides.reset ?? 'inherit',
   }
 
   const themeUiExtras = {

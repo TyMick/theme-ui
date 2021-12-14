@@ -58,6 +58,7 @@ export interface BootstrapLineHeights {
   base: CSS.Property.LineHeight<TLengthStyledSystem>
   sm: CSS.Property.LineHeight<TLengthStyledSystem>
   lg: CSS.Property.LineHeight<TLengthStyledSystem>
+  1: CSS.Property.LineHeight<TLengthStyledSystem>
 }
 export function generateLineHeights(
   overrides: Partial<
@@ -70,6 +71,7 @@ export function generateLineHeights(
     base: overrides.base ?? 1.5,
     sm: overrides.sm ?? 1.25,
     lg: overrides.lg ?? 2,
+    1: overrides[1] ?? 1,
   }
 
   const themeUiExtras = {
