@@ -1,5 +1,6 @@
 import { ScaleDict, TLengthStyledSystem } from '@theme-ui/css'
 import * as CSS from 'csstype'
+import { multiplyWithUnit } from './utils'
 
 export interface BootstrapFonts {
   sansSerif: CSS.Property.FontFamily
@@ -112,19 +113,4 @@ export function generateFontSizes(
   }
 
   return { ...overrides, ...bootstrapFontSizes }
-}
-
-function multiplyWithUnit(
-  measurement: CSS.Property.FontSize<number>,
-  factor: number
-) {
-  if (typeof measurement === 'number') {
-    return measurement * factor
-  }
-
-  const number = parseFloat(measurement)
-  if (Number.isNaN(number))
-    throw new Error("Can't multiply a measurement without a numeric component")
-  const unit = measurement.replace(number.toString(), '')
-  return `${number * factor}${unit}`
 }

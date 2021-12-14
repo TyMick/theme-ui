@@ -4,15 +4,13 @@ import { generateColors } from './colors'
 import { generateOpacities } from './opacities'
 import { generateShadows } from './shadows'
 import { generateSizes } from './sizes'
+import { generateSpace } from './space'
 import {
   generateFonts,
   generateFontSizes,
   generateFontWeights,
   generateLineHeights,
 } from './typography'
-
-// $ spacers
-export const space = [0, 0.25, 0.5, 1, 1.5, 3].map((n) => n + 'rem')
 
 export const breakpoints = ['576px', '768px', '992px', '1200px']
 
@@ -123,12 +121,12 @@ export const bootstrap = makeTheme({
   opacities: generateOpacities(),
   shadows: generateShadows(colors.black),
   sizes: generateSizes(),
+  space: generateSpace(),
   fonts: generateFonts(),
   fontSizes: generateFontSizes(),
   fontWeights: generateFontWeights(),
   lineHeights: generateLineHeights(),
   breakpoints,
-  space,
   text,
   styles,
 })
