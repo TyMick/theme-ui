@@ -45,6 +45,7 @@ export function generateRadii(
     sm: '0.2rem',
     lg: '0.3rem',
     pill: '50rem',
+    circle: '50%',
     ...overrides,
   }
 }
