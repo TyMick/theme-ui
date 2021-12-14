@@ -5,6 +5,7 @@ import { generateOpacities } from './opacities'
 import { generateShadows } from './shadows'
 import { generateSizes } from './sizes'
 import { generateSpace } from './space'
+import { generateTransitions } from './transitions'
 import {
   generateFonts,
   generateFontSizes,
@@ -122,6 +123,7 @@ export const bootstrap = makeTheme({
   shadows: generateShadows(colors.black),
   sizes: generateSizes(),
   space: generateSpace(),
+  transitions: generateTransitions(),
   fonts: generateFonts(),
   fontSizes: generateFontSizes(),
   fontWeights: generateFontWeights(),
