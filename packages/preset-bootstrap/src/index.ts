@@ -2,6 +2,7 @@ import { makeStyles, makeTheme } from '@theme-ui/css/utils'
 import { generateBorders, generateBorderWidths, generateRadii } from './borders'
 import { generateColors } from './colors'
 import { generateOpacities } from './opacities'
+import { generateShadows } from './shadows'
 import {
   generateFonts,
   generateFontSizes,
@@ -20,12 +21,6 @@ export const sizes = {
   md: 720,
   lg: 960,
   xl: 1140,
-}
-
-export const shadows = {
-  default: '0 .5rem 1rem rgba(0, 0, 0, .15)',
-  sm: '0 .125rem .25rem rgba(0, 0, 0, .075)',
-  lg: '0 1rem 3rem rgba(0, 0, 0, .175)',
 }
 
 const heading = {
@@ -133,6 +128,7 @@ export const bootstrap = makeTheme({
   radii: generateRadii(),
   colors,
   opacities: generateOpacities(),
+  shadows: generateShadows(colors.black),
   fonts: generateFonts(),
   fontSizes: generateFontSizes(),
   fontWeights: generateFontWeights(),
@@ -140,7 +136,6 @@ export const bootstrap = makeTheme({
   breakpoints,
   space,
   sizes,
-  shadows,
   text,
   styles,
 })
