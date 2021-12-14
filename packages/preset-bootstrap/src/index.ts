@@ -1,6 +1,7 @@
 import { makeStyles, makeTheme } from '@theme-ui/css/utils'
 import { generateBorders, generateBorderWidths, generateRadii } from './borders'
 import { generateColors } from './colors'
+import { generateOpacities } from './opacities'
 import {
   generateFonts,
   generateFontSizes,
@@ -131,6 +132,7 @@ export const bootstrap = makeTheme({
   borders: generateBorders(borderWidths, colors.grays[3]),
   radii: generateRadii(),
   colors,
+  opacities: generateOpacities(),
   fonts: generateFonts(),
   fontSizes: generateFontSizes(),
   fontWeights: generateFontWeights(),
