@@ -1,5 +1,6 @@
 import { ScaleDict, TLengthStyledSystem } from '@theme-ui/css'
 import * as CSS from 'csstype'
+import mapValues from 'lodash.mapvalues'
 
 export interface BootstrapBorderWidths {
   base: CSS.Property.BorderWidth<TLengthStyledSystem>
@@ -23,6 +24,28 @@ export function generateBorderWidths(
     3: '3px',
     4: '4px',
     5: '5px',
+    ...overrides,
+  }
+}
+
+export interface BootstrapBorders {
+  base: CSS.Property.Border<{}>
+  0: CSS.Property.Border<{}>
+  1: CSS.Property.Border<{}>
+  2: CSS.Property.Border<{}>
+  3: CSS.Property.Border<{}>
+  4: CSS.Property.Border<{}>
+  5: CSS.Property.Border<{}>
+}
+export function generateBorders(
+  borderWidths: BootstrapBorderWidths &
+    ScaleDict<CSS.Property.BorderWidth<TLengthStyledSystem>>,
+  borderColor: CSS.Property.Color,
+  overrides: Partial<BootstrapBorders & ScaleDict<CSS.Property.Border<{}>>> = {}
+): BootstrapBorders & ScaleDict<CSS.Property.Border<{}>> {
+  return {
+    0: '0',
+    ...mapValues(borderWidths, (width) => `${width} solid ${borderColor}`),
     ...overrides,
   }
 }
