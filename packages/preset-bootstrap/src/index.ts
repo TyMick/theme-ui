@@ -3,6 +3,7 @@ import { generateBorders, generateBorderWidths, generateRadii } from './borders'
 import { generateColors } from './colors'
 import { generateOpacities } from './opacities'
 import { generateShadows } from './shadows'
+import { generateSizes } from './sizes'
 import {
   generateFonts,
   generateFontSizes,
@@ -14,14 +15,6 @@ import {
 export const space = [0, 0.25, 0.5, 1, 1.5, 3].map((n) => n + 'rem')
 
 export const breakpoints = ['576px', '768px', '992px', '1200px']
-
-export const sizes = {
-  // container widths
-  sm: 540,
-  md: 720,
-  lg: 960,
-  xl: 1140,
-}
 
 const heading = {
   fontFamily: 'heading',
@@ -129,13 +122,13 @@ export const bootstrap = makeTheme({
   colors,
   opacities: generateOpacities(),
   shadows: generateShadows(colors.black),
+  sizes: generateSizes(),
   fonts: generateFonts(),
   fontSizes: generateFontSizes(),
   fontWeights: generateFontWeights(),
   lineHeights: generateLineHeights(),
   breakpoints,
   space,
-  sizes,
   text,
   styles,
 })
